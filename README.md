@@ -9,7 +9,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  multi_sort: ^0.0.1
+  multi_sort: ^1.0.0
 ```
 
 ### 2. Install it
