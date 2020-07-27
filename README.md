@@ -1,6 +1,6 @@
 # multi_sort
 
-A new Flutter package project.
+Sort an List of objects by one or more properties.
 
 ## Getting Started
 

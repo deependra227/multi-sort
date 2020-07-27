@@ -1,6 +1,5 @@
 library multi_sort;
 
-
 import 'package:flutter/cupertino.dart';
 
 class MultiSort{

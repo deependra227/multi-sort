@@ -1,7 +1,6 @@
 name: multi_sort
 description: Sort an List of objects by one or more properties.
 version: 0.0.1
-author: Deependra Chansoliya<deependrchansoliya@gmail.com>
 homepage: https://github.com/deependra227/multi-sort
 
 environment:
