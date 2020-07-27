@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.0]
 
 * Sort an List of objects by one or more properties library written in dart.
