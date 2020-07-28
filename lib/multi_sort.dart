@@ -3,38 +3,42 @@ library multi_sort;
 import 'package:flutter/cupertino.dart';
 
 class MultiSort {
-  dynamic allProperties;
+  List<bool> criteria;
   dynamic preferrence;
   dynamic sortingList;
-  bool increasing;
+
   MultiSort(
-      {@required this.allProperties,
+      {@required this.criteria,
       @required this.preferrence,
-      @required this.sortingList,
-      this.increasing = false});
+      @required this.sortingList});
 
   List<dynamic> sort() {
-    int compare(String property, dynamic a, dynamic b) {
-      if (a.get(property) == b.get(property))
+
+    if (preferrence.length == 0 || criteria.length == 0 || sortingList.length == 0) return [];
+    if (preferrence.length != criteria.length) 
+        return ['Criteria length is not equal to preferrence'];
+    
+    int compare(int i, dynamic a, dynamic b) {
+      if (a.get(preferrence[i]) == b.get(preferrence[i]))
         return 0;
-      else if (a.get(property) > b.get(property))
-        return increasing ? 1 : -1;
+      else if (a.get(preferrence[i]) > b.get(preferrence[i]))
+        return criteria[i] ? 1 : -1;
       else
-        return increasing ? -1 : 1;
+        return criteria[i] ? -1 : 1;
     }
 
-    int sortall(preferrence, a, b) {
+    int sortall(a, b) {
       int i = 0;
       int result;
       while (i < preferrence.length) {
-        result = compare(preferrence[i], a, b);
+        result = compare(i, a, b);
         if (result != 0) break;
         i++;
       }
       return result;
     }
 
-    sortingList.sort((a, b) => sortall(preferrence, a, b));
+    sortingList.sort((a, b) => sortall(a, b));
 
     return sortingList;
   }

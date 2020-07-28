@@ -1,6 +1,6 @@
 name: multi_sort
 description: Fast and powerful Flutter package that help you to sort an List of objects by one or more properties written in Dart.
-version: 1.0.0
+version: 2.0.0
 homepage: https://github.com/deependra227/multi-sort
 
 environment:

@@ -1,6 +1,36 @@
 # multi_sort [![Pub Package](https://img.shields.io/pub/v/multi_sort)](https://pub.dev/packages/multi_sort)
 
-Fast and powerful Flutter package that help you to sort an List of objects by one or more properties written in Dart.
+Fast and powerful Flutter package that help you to sort an List of objects by one or more properties at the same time.
+
+## Why?
+Suppose you have a list of Phones and you want to sort it according to there specification like RAM, Storage, Price , Camera etc. at the same time similar to Microsoft Excel sorting.<br><br>
+Suppose I have a list of phone as following
+```
+List<Phone> items = [
+    Phone("real me 6", 6, 18999, 128),
+    Phone("real me 6", 8, 19999, 128),
+    Phone("real Note 8", 7, 16999, 128),
+    Phone("oppo a9", 4, 13999, 128),
+    Phone("real me 6 pro", 6, 17999, 64),
+    Phone("Oppo 5as", 2, 8999, 32),
+    Phone("Real me 5i", 4, 10999, 64),
+    Phone("Poco x2", 6, 18500, 128),
+  ]
+```
+After sorting in the preferrence order of first by RAM and then by Storage you will get
+```
+[
+    Phone("real me 6", 8, 19999, 128),
+    Phone("real Note 8", 7, 16999, 128),
+    Phone("real me 6", 6, 18999, 128),
+    Phone("Poco x2", 6, 18500, 128),
+    Phone("real me 6 pro", 6, 17999, 64),
+    Phone("oppo a9", 4, 13999, 128),
+    Phone("Oppo 5as", 2, 8999, 32),
+    Phone("Real me 5i", 4, 10999, 64),
+ ]
+```
+Using this Flutter Package you can do this Preferrence Sort/Multiple Sorts/ Multiple level Sorts at the same time very easily.
 
 # Installing
 ### 1. Depend on it
@@ -9,7 +39,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  multi_sort: ^1.0.0
+  multi_sort: ^2.0.0
 ```
 
 ### 2. Install it
@@ -28,6 +58,13 @@ Now in your Dart code, you can use:
 ```dart
 import 'package:multi_sort/multi_sort.dart';
 ```
+# Documentation
+*  ```dynamic sortingList``` The List you want to sort.
+*  ```dynamic preferrence``` List of properties in which you want to sort the list i.e. ```List<property> preferrence = ['property1','property2']``` first sort the list by property1 then by property2.
+*  ```List<bool> criteria``` List of booleans that specifize the criteria of sort i.e. For ascending order ```true``` and for descending order ```false```.
+
+
+
 
 # Example
 ```

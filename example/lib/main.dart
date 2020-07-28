@@ -58,7 +58,7 @@ class _ExampleAppState extends State<ExampleApp> {
     Items("Poco x2", 6, 18500, 128),
   ];
   List<Items> sortingList = [];
-  List<String> allProperties = ['ram', 'storage', 'price'];
+  List<bool> criteria = [false,false];
   List<String> preferrence = ['ram', 'storage'];
 
   @override
@@ -105,7 +105,7 @@ class _ExampleAppState extends State<ExampleApp> {
       onPressed: () {
         setState(() {
           sortingList = MultiSort(
-                  allProperties: allProperties,
+                  criteria: criteria,
                   preferrence: preferrence,
                   sortingList: sortingList)
               .sort();
