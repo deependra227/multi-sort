@@ -26,6 +26,7 @@ class ExampleApp extends StatefulWidget {
   _ExampleAppState createState() => _ExampleAppState();
 }
 
+/// Class of Items
 class Items {
   String name;
   int ram;
@@ -33,10 +34,12 @@ class Items {
   int storage;
   Items(this.name, this.ram, this.price, this.storage);
 
+  ///Mapping the properties
   Map<String, dynamic> _toMap() {
     return {'name': name, 'price': price, 'ram': ram, 'storage': storage};
   }
 
+  ///get function to get the properties of Item
   dynamic get(String propertyName) {
     var _mapRep = _toMap();
     if (_mapRep.containsKey(propertyName)) {
@@ -47,6 +50,7 @@ class Items {
 }
 
 class _ExampleAppState extends State<ExampleApp> {
+  //List of Items
   List<Items> items = [
     Items("real me 6", 6, 18999, 128),
     Items("real me 6", 8, 19999, 128),
@@ -57,8 +61,11 @@ class _ExampleAppState extends State<ExampleApp> {
     Items("Real me 5i", 4, 10999, 64),
     Items("Poco x2", 6, 18500, 128),
   ];
+  // Temp List for sorting
   List<Items> sortingList = [];
-  List<bool> criteria = [false,false];
+  //Criteria List
+  List<bool> criteria = [false, false];
+  //prefrrence List
   List<String> preferrence = ['ram', 'storage'];
 
   @override
@@ -104,11 +111,8 @@ class _ExampleAppState extends State<ExampleApp> {
     return RaisedButton(
       onPressed: () {
         setState(() {
-          sortingList = MultiSort(
-                  criteria: criteria,
-                  preferrence: preferrence,
-                  sortingList: sortingList)
-              .sort();
+          ///Sorting using MultiSort
+          sortingList.multisort(criteria, preferrence);
         });
       },
       child: Text('Sort by preferrence'),
