@@ -1,10 +1,10 @@
 # multi_sort [![Pub Package](https://img.shields.io/pub/v/multi_sort)](https://pub.dev/packages/multi_sort)
 
-Fast and powerful Flutter package that help you to sort an List of objects by one or more properties at the same time.
+A fast and powerful Flutter package helps you sort a list of objects by one or more properties at the same time.
 
 ## Why?
-Suppose you have a list of Phones and you want to sort it according to there specification like RAM, Storage, Price , Camera etc. at the same time similar to Microsoft Excel sorting.<br><br>
-Suppose I have a list of phone as following
+Suppose you have a list of Phones and you want to sort it according to there specification like RAM, Storage, Price, Camera, etc. at the same time similar to Microsoft Excel sorting.<br><br>
+Suppose I have a list of phones as following.
 ```
 List<Phone> items = [
     Phone("real me 6", 6, 18999, 128),
@@ -17,7 +17,7 @@ List<Phone> items = [
     Phone("Poco x2", 6, 18500, 128),
   ]
 ```
-After sorting in the preferrence order of first by RAM and then by Storage you will get
+After sorting in the preference order of first by RAM and then by Storage you will get
 ```
 [
     Phone("real me 6", 8, 19999, 128),
@@ -30,7 +30,7 @@ After sorting in the preferrence order of first by RAM and then by Storage you w
     Phone("Real me 5i", 4, 10999, 64),
  ]
 ```
-Using this Flutter Package you can do this Preferrence Sort/Multiple Sorts/ Multiple level Sorts at the same time very easily.
+Using this Flutter Package, you can do this Preference Sort/Multiple Sorts/ Multiple level Sorts at the same time very easily.
 
 # Installing
 ### 1. Depend on it
@@ -39,7 +39,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  multi_sort: ^2.0.0
+  multi_sort: ^3.0.0
 ```
 
 ### 2. Install it
@@ -59,11 +59,20 @@ Now in your Dart code, you can use:
 import 'package:multi_sort/multi_sort.dart';
 ```
 # Documentation
-*  ```dynamic sortingList``` The List you want to sort.
 *  ```dynamic preferrence``` List of properties in which you want to sort the list i.e. ```List<property> preferrence = ['property1','property2']``` first sort the list by property1 then by property2.
-*  ```List<bool> criteria``` List of booleans that specifize the criteria of sort i.e. For ascending order ```true``` and for descending order ```false```.
+*  ```List<bool> criteria``` List of booleans that specifies the criteria of sort i.e., For ascending order ```true``` and for descending order ```false```.
 
-
+# Usage
+Initialization
+```
+List<property> list; // List of Items
+List<bool> criteria ; //Criteria List
+List<String> preferrence ; //prefrrence List
+```
+Now sort the list using multisort
+``` 
+list.multisort(criteria, preferrence);
+```
 
 
 # Example
@@ -96,6 +105,7 @@ class ExampleApp extends StatefulWidget {
   _ExampleAppState createState() => _ExampleAppState();
 }
 
+/// Class of Items
 class Items {
   String name;
   int ram;
@@ -103,10 +113,12 @@ class Items {
   int storage;
   Items(this.name, this.ram, this.price, this.storage);
 
+  ///Mapping the properties
   Map<String, dynamic> _toMap() {
     return {'name': name, 'price': price, 'ram': ram, 'storage': storage};
   }
 
+  ///get function to get the properties of Item
   dynamic get(String propertyName) {
     var _mapRep = _toMap();
     if (_mapRep.containsKey(propertyName)) {
@@ -117,6 +129,7 @@ class Items {
 }
 
 class _ExampleAppState extends State<ExampleApp> {
+  //List of Items
   List<Items> items = [
     Items("real me 6", 6, 18999, 128),
     Items("real me 6", 8, 19999, 128),
@@ -127,8 +140,11 @@ class _ExampleAppState extends State<ExampleApp> {
     Items("Real me 5i", 4, 10999, 64),
     Items("Poco x2", 6, 18500, 128),
   ];
+  // Temp List for sorting
   List<Items> sortingList = [];
-  List<String> allProperties = ['ram', 'storage', 'price'];
+  //Criteria List
+  List<bool> criteria = [false, false];
+  //prefrrence List
   List<String> preferrence = ['ram', 'storage'];
 
   @override
@@ -174,17 +190,15 @@ class _ExampleAppState extends State<ExampleApp> {
     return RaisedButton(
       onPressed: () {
         setState(() {
-          sortingList = MultiSort(
-                  allProperties: allProperties,
-                  preferrence: preferrence,
-                  sortingList: sortingList)
-              .sort();
+          ///Sorting using MultiSort
+          sortingList.multisort(criteria, preferrence);
         });
       },
       child: Text('Sort by preferrence'),
     );
   }
 }
+
 ```
 # License
 

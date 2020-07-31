@@ -1,23 +1,14 @@
 library multi_sort;
 
-import 'package:flutter/cupertino.dart';
+extension MultiSort on List {
+  multisort(List<bool> criteria, dynamic preferrence) {
+    if (preferrence.length == 0 || criteria.length == 0 || this.length == 0)
+      return this;
+    if (preferrence.length != criteria.length) {
+      print('Criteria length is not equal to preferrence');
+      return this;
+    }
 
-class MultiSort {
-  List<bool> criteria;
-  dynamic preferrence;
-  dynamic sortingList;
-
-  MultiSort(
-      {@required this.criteria,
-      @required this.preferrence,
-      @required this.sortingList});
-
-  List<dynamic> sort() {
-
-    if (preferrence.length == 0 || criteria.length == 0 || sortingList.length == 0) return [];
-    if (preferrence.length != criteria.length) 
-        return ['Criteria length is not equal to preferrence'];
-    
     int compare(int i, dynamic a, dynamic b) {
       if (a.get(preferrence[i]) == b.get(preferrence[i]))
         return 0;
@@ -38,8 +29,6 @@ class MultiSort {
       return result;
     }
 
-    sortingList.sort((a, b) => sortall(a, b));
-
-    return sortingList;
+    this.sort((a, b) => sortall(a, b));
   }
 }
